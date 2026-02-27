@@ -70,3 +70,39 @@ let hogwarts = [
     occupation: "Teacher",
   },
 ];
+
+function logPeopleByHouse(peopleList, houseName) {
+  peopleList.forEach((person) => {
+    if (person.house === houseName) {
+      const { firstName, lastName } = person;
+      console.log(`${firstName} ${lastName}`);
+    }
+  });
+}
+
+function logTeachersWithPets(peopleList) {
+  peopleList.forEach((person) => {
+    if (person.occupation === "Teacher" && person.pet !== null) {
+      const { firstName, lastName } = person;
+      console.log(`${firstName} ${lastName}`);
+    }
+  });
+}
+
+// I thought I'd make a more general version which can work for any condition
+// though there are no checks for invalid input
+function getPersonByPredicate(list, predicate) {
+  list.forEach((person) => {
+    if (predicate(person)) {
+      const { firstName, lastName } = person;
+      console.log(`${firstName} ${lastName}`);
+    }
+  });
+}
+
+getPersonByPredicate(hogwarts, (person) => person.house === "Gryffindor");
+
+getPersonByPredicate(
+  hogwarts,
+  (person) => person.occupation === "Teacher" && person.pet
+);
