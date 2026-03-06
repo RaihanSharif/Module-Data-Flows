@@ -37,12 +37,25 @@ function submit() {
   ) {
     alert("Please fill all fields!");
     return false;
-  } else {
-    let book = new Book(title.value, title.value, pages.value, check.checked);
-    myLibrary.push(book);
-    resetInputFields();
-    render();
   }
+
+  let book = new Book(title.value, author.value, pages.value, check.checked);
+
+  if (isBookInLibrary(book)) {
+    alert("This book is already in the library!");
+    return false;
+  }
+  myLibrary.push(book);
+  resetInputFields();
+  render();
+}
+
+function isBookInLibrary(newBook) {
+  return myLibrary.some(
+    (old) =>
+      old.title.toLowerCase() === newBook.title.toLowerCase() &&
+      old.author.toLowerCase() === newBook.author.toLowerCase()
+  );
 }
 
 function resetInputFields() {
