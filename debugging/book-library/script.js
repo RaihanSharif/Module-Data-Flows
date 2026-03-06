@@ -44,11 +44,11 @@ function submit() {
   }
 }
 
-function Book(title, author, pages, check) {
+function Book(title, author, pages, completed) {
   this.title = title;
   this.author = author;
   this.pages = pages;
-  this.check = check;
+  this.completed = completed;
 }
 
 function render() {
