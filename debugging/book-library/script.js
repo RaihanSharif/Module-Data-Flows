@@ -40,8 +40,16 @@ function submit() {
   } else {
     let book = new Book(title.value, title.value, pages.value, check.checked);
     myLibrary.push(book);
+    resetInputFields();
     render();
   }
+}
+
+function resetInputFields() {
+  title.value = "";
+  author.value = "";
+  pages.value = "";
+  check.checked = false;
 }
 
 function Book(title, author, pages, completed) {
