@@ -93,13 +93,17 @@ function render() {
 
     //add and wait for action for read/unread button
     let changeCompletedBtn = document.createElement("button");
-    changeCompletedBtn.className = "btn btn-success";
+    changeCompletedBtn.className = "btn";
     wasReadCell.appendChild(changeCompletedBtn);
     let readStatus = "";
     if (myLibrary[i].completed == true) {
       readStatus = "Yes";
+      changeCompletedBtn.classList.add("btn-success");
+      changeCompletedBtn.classList.remove("btn-secondary");
     } else {
       readStatus = "No";
+      changeCompletedBtn.classList.remove("btn-success");
+      changeCompletedBtn.classList.add("btn-secondary");
     }
     changeCompletedBtn.innerText = readStatus;
 
