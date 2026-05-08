@@ -100,9 +100,15 @@ function getPersonByPredicate(list, predicate) {
   });
 }
 
+/* 
+Example usable of the above general purpose version which allows the user to filter by different
+properties. 
+
 getPersonByPredicate(hogwarts, (person) => person.house === "Gryffindor");
 
 getPersonByPredicate(
   hogwarts,
   (person) => person.occupation === "Teacher" && person.pet
 );
+
+*/
