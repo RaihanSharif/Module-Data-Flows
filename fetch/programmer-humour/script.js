@@ -4,8 +4,7 @@ async function fetchXKCDComic() {
   if (!response.ok) {
     throw new Error(`Response status: ${response.status}`);
   }
-  const result = await response.json();
-  return result;
+  return response.json();
 }
 
 async function displayComic() {
