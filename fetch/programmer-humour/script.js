@@ -22,4 +22,4 @@ async function displayComic() {
   }
 }
 
-document.onload = displayComic();
+document.addEventListener("DOMContentLoaded", displayComic);
