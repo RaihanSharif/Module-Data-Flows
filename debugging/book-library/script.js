@@ -39,7 +39,13 @@ function submit() {
     return false;
   }
 
-  let book = new Book(title.value, author.value, pages.value, check.checked);
+  let book = new Book(
+    title.value,
+    author.value,
+    Number(pages.value),
+    check.checked
+  );
+  console.log(book);
 
   if (isBookInLibrary(book)) {
     alert("This book is already in the library!");
