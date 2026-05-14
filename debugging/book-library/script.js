@@ -20,7 +20,7 @@ function populateStorage() {
   }
 }
 
-const title = document.getElementById("title");
+const title = document.getElementById("book-title");
 const author = document.getElementById("author");
 const pages = document.getElementById("pages");
 const check = document.getElementById("check");
