@@ -43,6 +43,8 @@ function submit() {
     return false;
   }
 
+  const book = new Book(title, author, pages, isReadCheckbox.checked);
+
   if (isBookInLibrary(book)) {
     alert("This book is already in the library!");
     return false;
@@ -92,9 +94,9 @@ function render() {
     let pagesCell = row.insertCell(2);
     let wasReadCell = row.insertCell(3);
     let deleteCell = row.insertCell(4);
-    titleCell.innerHTML = myLibrary[i].title;
-    authorCell.innerHTML = myLibrary[i].author;
-    pagesCell.innerHTML = myLibrary[i].pages;
+    titleCell.textContent = myLibrary[i].title;
+    authorCell.textContent = myLibrary[i].author;
+    pagesCell.textContent = myLibrary[i].pages;
 
     //add and wait for action for read/unread button
     let changeCompletedBtn = document.createElement("button");
@@ -110,7 +112,7 @@ function render() {
       changeCompletedBtn.classList.remove("btn-success");
       changeCompletedBtn.classList.add("btn-secondary");
     }
-    changeCompletedBtn.innerText = readStatus;
+    changeCompletedBtn.textContent = readStatus;
 
     changeCompletedBtn.addEventListener("click", function () {
       myLibrary[i].completed = !myLibrary[i].completed;
@@ -121,7 +123,7 @@ function render() {
     let delBtn = document.createElement("button");
     deleteCell.appendChild(delBtn);
     delBtn.className = "btn btn-warning";
-    delBtn.innerHTML = "Delete";
+    delBtn.textContent = "Delete";
     delBtn.addEventListener("click", function () {
       alert(`You've deleted title: ${myLibrary[i].title}`);
       myLibrary.splice(i, 1);
