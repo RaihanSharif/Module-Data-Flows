@@ -8,12 +8,14 @@ let order = [
 ];
 
 function printReceipt(order) {
+  const qtyWidth = 8;
+  const itemWidth = 20;
+
   console.log(`${"QTY".padEnd(8)}${"ITEM".padEnd(20)}TOTAL`);
   let total = 0;
-  order.forEach((item) => {
-    const { quantity, itemName, unitPricePence } = item;
+  order.forEach(({ quantity, itemName, unitPricePence }) => {
     console.log(
-      `${String(quantity).padEnd(8)}${String(itemName).padEnd(20)}${((quantity * unitPricePence) / 100).toFixed(2)}`
+      `${String(quantity).padEnd(qtyWidth)}${String(itemName).padEnd(itemWidth)}${((quantity * unitPricePence) / 100).toFixed(2)}`
     );
     total += quantity * unitPricePence;
   });
