@@ -10,7 +10,7 @@
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     />
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <script type="module" src="script.js" defer></script>
+    <script type="module" src="script.js"></script>
   </head>
 
   <body>
@@ -31,6 +31,8 @@
           class="form-control"
           id="book-title"
           name="book-title"
+          minlength="1"
+          maxlength="200"
           required
         />
         <label for="author">Author: </label>
@@ -39,6 +41,8 @@
           class="form-control"
           id="author"
           name="author"
+          minlength="2"
+          maxlength="100"
           required
         />
         <label for="pages">Pages:</label>
@@ -47,6 +51,8 @@
           class="form-control"
           id="pages"
           name="pages"
+          min="1"
+          max="10000"
           required
         />
         <label class="form-check-label">
