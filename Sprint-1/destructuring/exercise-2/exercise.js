@@ -72,18 +72,16 @@ let hogwarts = [
 ];
 
 function logPeopleByHouse(peopleList, houseName) {
-  peopleList.forEach((person) => {
-    if (person.house === houseName) {
-      const { firstName, lastName } = person;
+  peopleList.forEach(({ house, firstName, lastName }) => {
+    if (house === houseName) {
       console.log(`${firstName} ${lastName}`);
     }
   });
 }
 
 function logTeachersWithPets(peopleList) {
-  peopleList.forEach((person) => {
-    if (person.occupation === "Teacher" && person.pet !== null) {
-      const { firstName, lastName } = person;
+  peopleList.forEach(({ occupation, pet, firstName, lastName }) => {
+    if (occupation === "Teacher" && pet !== null) {
       console.log(`${firstName} ${lastName}`);
     }
   });
@@ -99,7 +97,6 @@ function getPersonByPredicate(list, predicate) {
     }
   });
 }
-
 /* 
 Example usable of the above general purpose version which allows the user to filter by different
 properties. 
