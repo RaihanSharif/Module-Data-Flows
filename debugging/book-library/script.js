@@ -24,6 +24,7 @@ const title = document.getElementById("book-title");
 const author = document.getElementById("author");
 const pages = document.getElementById("pages");
 const check = document.getElementById("check");
+const submitBtn = document.getElementById("submit-btn");
 
 //check the right input from forms and if its ok -> add the new book (object in array)
 //via Book function and start render function
@@ -48,6 +49,8 @@ function submit() {
   resetInputFields();
   render();
 }
+
+submitBtn.addEventListener("click", submit);
 
 function isBookInLibrary(newBook) {
   return myLibrary.some(
