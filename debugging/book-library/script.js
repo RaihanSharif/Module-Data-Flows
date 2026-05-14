@@ -1,4 +1,4 @@
-let myLibrary = [];
+const myLibrary = [];
 
 window.addEventListener("load", function (e) {
   populateStorage();
@@ -79,40 +79,33 @@ function Book(title, author, pages, completed) {
 }
 
 function render() {
-  let table = document.getElementById("display");
-  let rowsNumber = table.rows.length;
+  const table = document.getElementById("display");
+  const rowsNumber = table.rows.length;
   //delete old table
   for (let n = rowsNumber - 1; n > 0; n--) {
     table.deleteRow(n);
   }
   //insert updated row and cells
-  let length = myLibrary.length;
+  const length = myLibrary.length;
   for (let i = 0; i < length; i++) {
-    let row = table.insertRow(1);
-    let titleCell = row.insertCell(0);
-    let authorCell = row.insertCell(1);
-    let pagesCell = row.insertCell(2);
-    let wasReadCell = row.insertCell(3);
-    let deleteCell = row.insertCell(4);
+    const row = table.insertRow(1);
+    const titleCell = row.insertCell(0);
+    const authorCell = row.insertCell(1);
+    const pagesCell = row.insertCell(2);
+    const wasReadCell = row.insertCell(3);
+    const deleteCell = row.insertCell(4);
     titleCell.textContent = myLibrary[i].title;
     authorCell.textContent = myLibrary[i].author;
     pagesCell.textContent = myLibrary[i].pages;
 
     //add and wait for action for read/unread button
-    let changeCompletedBtn = document.createElement("button");
+    const changeCompletedBtn = document.createElement("button");
     changeCompletedBtn.className = "btn";
     wasReadCell.appendChild(changeCompletedBtn);
-    let readStatus = "";
-    if (myLibrary[i].completed == true) {
-      readStatus = "Yes";
-      changeCompletedBtn.classList.add("btn-success");
-      changeCompletedBtn.classList.remove("btn-secondary");
-    } else {
-      readStatus = "No";
-      changeCompletedBtn.classList.remove("btn-success");
-      changeCompletedBtn.classList.add("btn-secondary");
-    }
-    changeCompletedBtn.textContent = readStatus;
+    changeCompletedBtn.classList.add(
+      myLibrary[i].completed ? "btn-success" : "btn-secondary"
+    );
+    changeCompletedBtn.textContent = myLibrary[i].completed ? "Yes" : "No";
 
     changeCompletedBtn.addEventListener("click", function () {
       myLibrary[i].completed = !myLibrary[i].completed;
@@ -120,12 +113,13 @@ function render() {
     });
 
     //add delete button to every row and render again
-    let delBtn = document.createElement("button");
+    const delBtn = document.createElement("button");
     deleteCell.appendChild(delBtn);
     delBtn.className = "btn btn-warning";
     delBtn.textContent = "Delete";
     delBtn.addEventListener("click", function () {
-      alert(`You've deleted title: ${myLibrary[i].title}`);
+      const deletedBook = myLibrary[i].title;
+      if (!confirm(`Delete "${deletedBook}?`)) return;
       myLibrary.splice(i, 1);
       render();
     });
