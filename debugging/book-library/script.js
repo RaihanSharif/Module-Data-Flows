@@ -20,30 +20,25 @@ function populateStorage() {
   }
 }
 
-const title = document.getElementById("book-title");
-const author = document.getElementById("author");
-const pages = document.getElementById("pages");
-const check = document.getElementById("check");
+const titleInput = document.getElementById("book-title");
+const authorInput = document.getElementById("author");
+const pagesInput = document.getElementById("pages");
+const isReadCheckbox = document.getElementById("check");
 const submitBtn = document.getElementById("submit-btn");
 
 //check the right input from forms and if its ok -> add the new book (object in array)
 //via Book function and start render function
 function submit() {
-  if (
-    title.value == null ||
-    title.value == "" ||
-    pages.value == null ||
-    pages.value == ""
-  ) {
+  if (titleInput.value == "" || pagesInput.value == "") {
     alert("Please fill all fields!");
     return false;
   }
 
   let book = new Book(
-    title.value,
-    author.value,
-    Number(pages.value),
-    check.checked
+    titleInput.value,
+    authorInput.value,
+    Number(pagesInput.value),
+    isReadCheckbox.checked
   );
   console.log(book);
 
@@ -67,10 +62,10 @@ function isBookInLibrary(newBook) {
 }
 
 function resetInputFields() {
-  title.value = "";
-  author.value = "";
-  pages.value = "";
-  check.checked = false;
+  titleInput.value = "";
+  authorInput.value = "";
+  pagesInput.value = "";
+  isReadCheckbox.checked = false;
 }
 
 function Book(title, author, pages, completed) {
