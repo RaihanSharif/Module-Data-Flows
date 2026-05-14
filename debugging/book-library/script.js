@@ -29,18 +29,19 @@ const submitBtn = document.getElementById("submit-btn");
 //check the right input from forms and if its ok -> add the new book (object in array)
 //via Book function and start render function
 function submit() {
-  if (titleInput.value == "" || pagesInput.value == "") {
-    alert("Please fill all fields!");
+  const title = titleInput.value.trim();
+  const author = authorInput.value.trim();
+  const pages = Number(pagesInput.value);
+
+  if (title === "") {
+    alert("Please fill title field!");
     return false;
   }
 
-  let book = new Book(
-    titleInput.value,
-    authorInput.value,
-    Number(pagesInput.value),
-    isReadCheckbox.checked
-  );
-  console.log(book);
+  if (!Number.isInteger(pages) || pages < 1) {
+    alert("Pages must be a whole number greater than 0!");
+    return false;
+  }
 
   if (isBookInLibrary(book)) {
     alert("This book is already in the library!");
