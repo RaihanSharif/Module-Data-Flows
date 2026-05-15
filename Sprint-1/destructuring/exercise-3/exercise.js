@@ -8,7 +8,7 @@ let order = [
 ];
 
 // helper function that pads each item in a line by a certain amount
-function getReceiptString(quantity, itemName, total) {
+function formatReceiptEntry(quantity, itemName, total) {
   const qtyWidth = 8;
   const itemWidth = 20;
 
@@ -17,14 +17,14 @@ function getReceiptString(quantity, itemName, total) {
 
 function printReceipt(order) {
   // print header
-  console.log(getReceiptString("QTY", "ITEM", "TOTAL"));
+  console.log(formatReceiptEntry("QTY", "ITEM", "TOTAL"));
 
   let total = 0;
 
   // print each line item
   order.forEach(({ quantity, itemName, unitPricePence }) => {
     const price = ((quantity * unitPricePence) / 100).toFixed(2);
-    console.log(getReceiptString(quantity, itemName, price));
+    console.log(formatReceiptEntry(quantity, itemName, price));
     total += quantity * unitPricePence;
   });
 
